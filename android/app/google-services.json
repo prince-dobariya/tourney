@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "639991016592",
+    "project_id": "tourney-be27f",
+    "storage_bucket": "tourney-be27f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639991016592:android:a72077a02ff60c0b833c15",
+        "android_client_info": {
+          "package_name": "com.game.tourney"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWzJJb9IRK0SNOz3bm_yeAJ5UlJgawixo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
