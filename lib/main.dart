@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tourney/config/dimens.dart';
+import 'package:tourney/screens/home_main.dart';
 import 'package:tourney/screens/profile_screen.dart';
 
 void main() {
@@ -13,24 +13,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    //   DeviceOrientation.landscapeLeft,
+    //   DeviceOrientation.landscapeRight
+    // ]);
     return GetMaterialApp(
       title: 'Tourney',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       builder: (context, child) {
         deviceWidth = MediaQuery.sizeOf(context).width;
         deviceHeight = MediaQuery.sizeOf(context).height;
-        deviceAverageSize = (deviceWidth + deviceHeight)/2;
+        deviceAverageSize = (deviceWidth + deviceHeight) / 2;
         statusHeight = MediaQuery.of(context).padding.top;
         textScaleFactorOf = MediaQuery.textScaleFactorOf(context);
-        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), child: child??Container());
+        return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: child ?? Container());
       },
-      home: const ProfileScreen(),
+      home: const HomeMain(),
     );
   }
 }

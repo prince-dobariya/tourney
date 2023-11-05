@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tourney/config/dimens.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -61,6 +60,16 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+              Card(
+                child: ListTile(
+                  title: Text('Settings'),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  title: Text('Log out'),
+                ),
               )
             ],
           ),
