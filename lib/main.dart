@@ -1,20 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:tourney/config/dimens.dart';
+import 'package:tourney/config/dimention.dart';
+import 'package:tourney/constant/routes.dart';
+import 'package:tourney/firebase_options.dart';
+import 'package:tourney/screens/chat/chat_home.dart';
 import 'package:tourney/screens/home_main.dart';
-import 'package:tourney/screens/login/login_screen.dart';
+import 'package:tourney/screens/home_screen.dart';
 import 'package:tourney/screens/profile_screen.dart';
+import 'package:tourney/screens/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyAWzJJb9IRK0SNOz3bm_yeAJ5UlJgawixo",
-          appId: "1:639991016592:android:a72077a02ff60c0b833c15",
-          messagingSenderId: "639991016592",
-          projectId: "tourney-be27f"));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight
     ]);
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Tourney',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -46,8 +44,15 @@ class MyApp extends StatelessWidget {
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: child ?? Container());
       },
-      // home: const HomeMain(),
-      home: LoginScreen(),
+      initialRoute: splashScreen,
+      routes: {
+        splashScreen: (_) => const SplashScreen(),
+        homeMain: (_) => const HomeMain(),
+        homeScreen: (_) => const HomeScreen(),
+        profileScreen: (_) => const ProfileScreen(),
+        chatHome: (_) => const ChatHome(),
+        // chatScreen :(_) => const ChatScreen(),
+      },
     );
   }
 }

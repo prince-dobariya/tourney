@@ -1,13 +1,33 @@
 {
   "project_info": {
-    "project_number": "639991016592",
-    "project_id": "tourney-be27f",
-    "storage_bucket": "tourney-be27f.appspot.com"
+    "project_number": "719759665160",
+    "firebase_url": "https://tourney-2024-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tourney-2024",
+    "storage_bucket": "tourney-2024.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:639991016592:android:a72077a02ff60c0b833c15",
+        "mobilesdk_app_id": "1:719759665160:android:f8838177841d0b026509bd",
+        "android_client_info": {
+          "package_name": "com.example.tourney"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRrsm-YvMf8JVXW8tXJcwkqsdYokAfv2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719759665160:android:25e68846bb7afb636509bd",
         "android_client_info": {
           "package_name": "com.game.tourney"
         }
@@ -15,7 +35,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAWzJJb9IRK0SNOz3bm_yeAJ5UlJgawixo"
+          "current_key": "AIzaSyCRrsm-YvMf8JVXW8tXJcwkqsdYokAfv2w"
         }
       ],
       "services": {

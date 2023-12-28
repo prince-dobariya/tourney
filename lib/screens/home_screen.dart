@@ -1,36 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:tourney/config/dimention.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [_appbar()],
-      ),
-    );
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
+    super.initState();
   }
 
-  Widget _appbar() {
-    return SizedBox(
-      height: kToolbarHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text('Hey Guest!'),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 5),
-              decoration: BoxDecoration(
-              color: Colors.amber, 
-              borderRadius: BorderRadius.circular(5)
-              ),
-              child: const Row(
-            children: [Icon(Icons.attach_money), Text('200')],
-          ))
-        ],
-      ),
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          title: const Text('Tourney'),
+          floating: true,
+          expandedHeight: deviceWidth/2,
+          flexibleSpace: FlexibleSpaceBar(
+            background: PageView(
+              children: [
+                Container(color: Colors.red),
+                Container(color: Colors.green),
+                Container(color: Colors.blue),
+              ],
+            ),
+          ),
+          bottom: TabBar.secondary(
+            controller: _tabController, tabs: const [
+            Tab(text: 'OnGoing'),
+            Tab(text: 'Upcoming'),
+            Tab(text: 'Closed'),
+          ]),
+        ),
+        SliverFillRemaining(
+          child: TabBarView(controller: _tabController, children: const [
+            Text("data"),
+            SizedBox(height: 200, child: Text("data")),
+            SizedBox(height: 200, child: Text("data")),
+          ]),
+        )
+
+        // TabBarView(controller: _tabController, children: const [
+        //   // SliverToBoxAdapter(child: Text('data'),),
+        //   // SliverToBoxAdapter(child: Text('data'),),
+        //   // SliverToBoxAdapter(child: Text('data'),),
+        // ])
+      ],
     );
   }
 }
