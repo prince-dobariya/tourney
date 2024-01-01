@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tourney/config/dimention.dart';
 import 'package:tourney/screens/bgmi/bgmi_screen.dart';
 
 class HomeScreen extends StatefulWidget {
