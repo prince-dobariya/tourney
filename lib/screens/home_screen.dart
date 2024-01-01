@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourney/config/dimention.dart';
+import 'package:tourney/screens/bgmi/bgmi_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,43 +19,28 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          title: const Text('Tourney'),
-          floating: true,
-          expandedHeight: deviceWidth/2,
-          flexibleSpace: FlexibleSpaceBar(
-            background: PageView(
-              children: [
-                Container(color: Colors.red),
-                Container(color: Colors.green),
-                Container(color: Colors.blue),
-              ],
-            ),
-          ),
-          bottom: TabBar.secondary(
-            controller: _tabController, tabs: const [
-            Tab(text: 'OnGoing'),
-            Tab(text: 'Upcoming'),
-            Tab(text: 'Closed'),
-          ]),
-        ),
-        SliverFillRemaining(
-          child: TabBarView(controller: _tabController, children: const [
-            Text("data"),
-            SizedBox(height: 200, child: Text("data")),
-            SizedBox(height: 200, child: Text("data")),
-          ]),
-        )
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
-        // TabBarView(controller: _tabController, children: const [
-        //   // SliverToBoxAdapter(child: Text('data'),),
-        //   // SliverToBoxAdapter(child: Text('data'),),
-        //   // SliverToBoxAdapter(child: Text('data'),),
-        // ])
-      ],
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tourney'),
+        bottom: TabBar.secondary(controller: _tabController, tabs: const [
+          Tab(text: 'OnGoing'),
+          Tab(text: 'Upcoming'),
+          Tab(text: 'Closed'),
+        ]),
+      ),
+      drawer: const Drawer(),
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+        BgmiScreen(),Text("matches"),Text("chats")
+      ]),
     );
   }
 }
